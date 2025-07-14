@@ -126,7 +126,7 @@ postpulse/
 
 ### 1. Prerequisites
 
-- Your backend pod must have resource requests defined for CPU (✅ you already did this)
+- Your backend pod must have resource requests defined for CPU
 - Metrics server must be installed in your cluster:
 
 ```bash
