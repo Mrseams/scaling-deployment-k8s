@@ -14,9 +14,16 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: your-dockerhub-username/postpulse-frontend
+          image: mrseams/kubernetes-scaling-test-frontend
           ports:
             - containerPort: 80
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "128Mi"
+              cpu: "100m"
 ---
 apiVersion: v1
 kind: Service

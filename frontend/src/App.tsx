@@ -7,17 +7,20 @@ interface Post {
 }
 
 const App: React.FC = () => {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [showForm, setShowForm] = useState(false);
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const [title, setTitle] = useState("");
+  const [error, setError] = useState("");
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [showForm, setShowForm] = useState(false);
 
   const fetchPosts = async () => {
+    console.log(apiUrl);
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:3000/posts");
+      const res = await fetch(`${apiUrl}`);
       const data = await res.json();
       setPosts(data);
     } catch (err) {
@@ -39,7 +42,7 @@ const App: React.FC = () => {
       return;
     }
     try {
-      const res = await fetch("http://localhost:3000/posts", {
+      const res = await fetch(`${apiUrl}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title, content }),
@@ -62,7 +65,7 @@ const App: React.FC = () => {
           className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
           onClick={() => setShowForm((f) => !f)}
         >
-          {showForm ? "Hide Form" : "Add Post"}
+          {showForm ? "Hide Form" : "Add Poste"}
         </button>
       </div>
       {showForm && (

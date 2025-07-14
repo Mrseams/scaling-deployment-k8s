@@ -8,6 +8,7 @@ services:
 
   backend:
     build: ./backend
+    image: mrseams/kubernetes-scaling-test-backend:latest
     ports:
       - "5000:3000"
     environment:
@@ -17,8 +18,11 @@ services:
 
   frontend:
     build: ./frontend
+    image: mrseams/kubernetes-scaling-test-frontend:latest
     ports:
       - "3000:80"
+    environment:
+      - VITE_API_URL=127.0.0.1:5000/posts
     volumes:
       - ./frontend:/app
     depends_on:

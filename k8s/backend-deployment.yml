@@ -14,12 +14,20 @@ spec:
     spec:
       containers:
         - name: backend
-          image: your-dockerhub-username/postpulse-backend
+          image: mrseams/kubernetes-scaling-test-backend
           ports:
-            - containerPort: 5000
+            - containerPort: 3000
           env:
             - name: MONGO_URI
-              value: mongodb://mongo:27017/postpulse
+              value: mongodb://mongo:27017/db
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "128Mi"
+              cpu: "100m"
+
 ---
 apiVersion: v1
 kind: Service
@@ -30,4 +38,4 @@ spec:
     app: backend
   ports:
     - port: 5000
-      targetPort: 5000
+      targetPort: 3000

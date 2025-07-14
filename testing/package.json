@@ -1,0 +1,19 @@
+{
+  "name": "testing",
+  "version": "1.0.0",
+  "description": "small k6 script for stress testing",
+  "main": "test.js",
+  "scripts": {
+    "test": "k6 run test.js"
+  },
+  "keywords": [
+    "test",
+    "k6",
+    "scaling"
+  ],
+  "author": "Mrseams",
+  "license": "ISC",
+  "dependencies": {
+    "k6": "^0.0.0"
+  }
+}
