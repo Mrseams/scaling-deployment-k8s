@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "small k6 script for stress testing",
   "main": "test.js",
-  "scripts": {
-    "test": "k6 run test.js"
-  },
+  "scripts": {},
   "keywords": [
     "test",
     "k6",
